@@ -2,18 +2,21 @@
     <section class="post-list">
         <PostPreview
                 id="1"
+                :is-admin="isAdmin"
                 thumbnail="http://www.umbrellaconsultants.com/files/resources/outer-banks-web-development-hosting.jpg"
                 previewText="Learn to Code!"
                 title="Development"
         />
         <PostPreview
                 id="2"
+                :is-admin="isAdmin"
                 thumbnail="http://www.impactoeldiario.com/file/2018/01/web_design_benefits.jpg"
                 previewText="Learn to Design!"
                 title="Design"
         />
         <PostPreview
                 id="3"
+                :is-admin="isAdmin"
                 thumbnail="http://6798-presscdn-0-89.pagely.netdna-cdn.com/wp-content/uploads/2016/09/green-picnic-Blog-post-header.jpg"
                 previewText="Deadline meetups in huge company!"
                 title="Meetups"
@@ -25,9 +28,15 @@
     import PostPreview from '@/components/Posts/PostPreview'
 
     export default {
-        components: {
-            PostPreview
+      components: {
+          PostPreview
+      },
+      props: {
+        isAdmin: {
+          type: Boolean,
+          default: false
         }
+      }
     }
 </script>
 
