@@ -4,27 +4,37 @@
             <h1>Get the latest tech news!</h1>
         </section>
         <section class="featured-posts">
-            <nuxt-link :to='`/posts/1`' class="post-preview">
-                <article>
-                    <div class="post-thumbnail" style="background-image: url('http://www.umbrellaconsultants.com/files/resources/outer-banks-web-development-hosting.jpg')"></div>
-                    <div class="post-content">
-                        <h1>Post Title 2</h1>
-                        <p>Preview Text 2</p>
-                    </div>
-                </article>
-            </nuxt-link>
-            <nuxt-link :to='`/posts/2`' class="post-preview">
-                <article>
-                    <div class="post-thumbnail" style="background-image: url('https://www.yastengroup.com/wp-content/uploads/2017/08/web-design-agency.png')"></div>
-                    <div class="post-content">
-                        <h1>Post Title 2</h1>
-                        <p>Preview Text 2</p>
-                    </div>
-                </article>
-            </nuxt-link>
+            <PostPreview
+                id="1"
+                thumbnail="http://www.umbrellaconsultants.com/files/resources/outer-banks-web-development-hosting.jpg"
+                previewText="Learn to Code!"
+                title="Development"
+            />
+            <PostPreview
+                id="2"
+                thumbnail="http://www.impactoeldiario.com/file/2018/01/web_design_benefits.jpg"
+                previewText="Learn to Design!"
+                title="Design"
+            />
+            <PostPreview
+                id="3"
+                thumbnail="http://6798-presscdn-0-89.pagely.netdna-cdn.com/wp-content/uploads/2016/09/green-picnic-Blog-post-header.jpg"
+                previewText="Deadline meetups in huge company!"
+                title="Meetups"
+            />
         </section>
     </div>
 </template>
+
+<script>
+    import PostPreview from '@/components/Posts/PostPreview'
+
+    export default {
+      components: {
+          PostPreview
+      }
+    }
+</script>
 
 <style scoped>
     .intro {
@@ -32,6 +42,7 @@
         position: relative;
         padding: 30px;
         box-sizing: border-box;
+        background-image: url('~assets/images/stars.png');
         background-position: center;
         background-size: cover;
     }
@@ -66,40 +77,6 @@
         justify-content: center;
     }
 
-    .post-preview {
-        border: 1px solid #ccc;
-        box-shadow: 0 2px 2px #ccc;
-        background-color: white;
-        width: 90%;
-    }
 
-    a {
-        text-decoration: none;
-        color: black;
-    }
-
-    @media (min-width: 850px) {
-        .post-preview {
-            width: 400px;
-            margin: 10px;
-        }
-    }
-
-    .post-thumbnail {
-        width: 100%;
-        height: 200px;
-        background-position: center;
-        background-size: cover;
-    }
-
-    .post-content {
-        padding: 10px;
-        text-align: center;
-    }
-
-    a:hover .post-content,
-    a:active .post-content {
-        background-color: #ccc;
-    }
 </style>
 
