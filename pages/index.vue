@@ -3,36 +3,17 @@
         <section class="intro">
             <h1>Get the latest tech news!</h1>
         </section>
-        <section class="featured-posts">
-            <PostPreview
-                id="1"
-                thumbnail="http://www.umbrellaconsultants.com/files/resources/outer-banks-web-development-hosting.jpg"
-                previewText="Learn to Code!"
-                title="Development"
-            />
-            <PostPreview
-                id="2"
-                thumbnail="http://www.impactoeldiario.com/file/2018/01/web_design_benefits.jpg"
-                previewText="Learn to Design!"
-                title="Design"
-            />
-            <PostPreview
-                id="3"
-                thumbnail="http://6798-presscdn-0-89.pagely.netdna-cdn.com/wp-content/uploads/2016/09/green-picnic-Blog-post-header.jpg"
-                previewText="Deadline meetups in huge company!"
-                title="Meetups"
-            />
-        </section>
+        <PostList/>
     </div>
 </template>
 
 <script>
-    import PostPreview from '@/components/Posts/PostPreview'
+    import PostList from '@/components/Posts/PostList'
 
     export default {
-      components: {
-          PostPreview
-      }
+        components: {
+            PostList
+        }
     }
 </script>
 
