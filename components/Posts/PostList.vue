@@ -1,25 +1,13 @@
 <template>
     <section class="post-list">
         <PostPreview
-                id="1"
+                v-for="post in posts"
+                :key="post.id"
+                :id="post.id"
                 :is-admin="isAdmin"
-                thumbnail="http://www.umbrellaconsultants.com/files/resources/outer-banks-web-development-hosting.jpg"
-                previewText="Learn to Code!"
-                title="Development"
-        />
-        <PostPreview
-                id="2"
-                :is-admin="isAdmin"
-                thumbnail="http://www.impactoeldiario.com/file/2018/01/web_design_benefits.jpg"
-                previewText="Learn to Design!"
-                title="Design"
-        />
-        <PostPreview
-                id="3"
-                :is-admin="isAdmin"
-                thumbnail="http://6798-presscdn-0-89.pagely.netdna-cdn.com/wp-content/uploads/2016/09/green-picnic-Blog-post-header.jpg"
-                previewText="Deadline meetups in huge company!"
-                title="Meetups"
+                :thumbnail="post.thumbnail"
+                :title="post.title"
+                :previewText="post.previewText"
         />
     </section>
 </template>
@@ -35,6 +23,10 @@
         isAdmin: {
           type: Boolean,
           default: false
+        },
+        posts: {
+          type: Array,
+          required: true
         }
       }
     }
