@@ -1,72 +1,37 @@
 <template>
-    <div class="single-post-page">
-        <section class="post">
-            <h1 class="post-title">Title of the post</h1>
-            <div class="post-details">
-                <div class="post-detail">Last updated on XXX</div>
-                <div class="post-detail">Written by NAME</div>
-            </div>
-            <p class="post-content">Content of the post</p>
-        </section>
-        <section class="post-feedback">
-            <p>Let me know what you think about the post, send a mail to <a href="mailto:exapmple@example.com">exapmple@example.com</a></p>
-        </section>
+    <div>
+        <Post
+          :id="loadedPost.id"
+          :title="loadedPost.title"
+          :author="loadedPost.author"
+          :previewText="loadedPost.previewText"
+          :updatedDate="loadedPost.updatedDate"
+          :content="loadedPost.content"
+        />
     </div>
 </template>
 
-<style scoped>
-    .single-post-page {
-        padding: 30px;
-        text-align: center;
-        box-sizing: border-box;
-    }
+<script>
+  import Post from '@/components/Posts/Post'
 
-    .post {
-        width: 100%;
+  export default {
+    components: {
+      Post
+    },
+    asyncData(context, callback) {
+      setTimeout(() => {
+        callback(null, {
+          loadedPost: {
+              id: 1,
+              title: `Development (ID: ${context.params.id})`,
+              previewText: 'Learn to Code!',
+              author: 'Alexandr@Puwka',
+              updatedDate: new Date(),
+              content: 'Hello guys, in that section of my blog I\'ll teach you how to make your own Nuxt.JS-Express web-application!',
+              thumbnail: 'http://www.umbrellaconsultants.com/files/resources/outer-banks-web-development-hosting.jpg'
+          }
+        })
+      }, 800)
     }
-
-    @media (min-width: 768px) {
-        .post {
-            width: 600px;
-            margin: auto;
-        }
-    }
-
-    .post-title {
-        margin: 0;
-    }
-
-    .post-details {
-        padding: 10px;
-        box-sizing: border-box;
-        border-bottom: 3px solid #ccc;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-    }
-
-    @media (min-width: 768px) {
-        .post-details {
-            flex-direction: row;
-        }
-    }
-
-    .post-detail {
-        color: rgb(88, 88, 88);
-        margin: 0 10px;
-    }
-
-    .post-feedback a {
-        color: red;
-        text-decoration: none;
-    }
-
-    .post-feedback a:hover,
-    .post-feedback a:active {
-        color: salmon;
-    }
-    .post-content {
-        margin-top: 10px;
-    }
-</style>
+  }
+</script>
