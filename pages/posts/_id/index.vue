@@ -13,25 +13,20 @@
 
 <script>
   import Post from '@/components/Posts/Post'
+  import axios from 'axios'
 
   export default {
     components: {
       Post
     },
-    asyncData(context, callback) {
-      setTimeout(() => {
-        callback(null, {
-          loadedPost: {
-              id: 1,
-              title: `Development (ID: ${context.params.id})`,
-              previewText: 'Learn to Code!',
-              author: 'Alexandr@Puwka',
-              updatedDate: new Date(),
-              content: 'Hello guys, in that section of my blog I\'ll teach you how to make your own Nuxt.JS-Express web-application!',
-              thumbnail: 'http://www.umbrellaconsultants.com/files/resources/outer-banks-web-development-hosting.jpg'
-          }
-        })
-      }, 800)
+    asyncData(context) {
+      return axios.get(`https://nuxt-demo-e3f33.firebaseio.com/posts/${context.params.id}.json`)
+      .then(response => {
+        return {
+          loadedPost: response.data
+        }
+      })
+      .catch(e => context.error(e))
     }
   }
 </script>

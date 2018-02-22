@@ -17,7 +17,7 @@
     },
     methods: {
       onSubmitted(postData) {
-        axios.post('https://nuxt-demo-e3f33.firebaseio.com/posts.json', postData)
+        axios.post('https://nuxt-demo-e3f33.firebaseio.com/posts.json', {...postData, updatedDate: new Date()})
         .then(response => console.log(response))
         .catch(e => console.log(e))
       }
