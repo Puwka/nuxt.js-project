@@ -23,7 +23,7 @@
       return axios.get(`https://nuxt-demo-e3f33.firebaseio.com/posts/${context.params.id}.json`)
       .then(response => {
         return {
-          loadedPost: response.data
+          loadedPost: {...response.data, id: context.params.id}
         }
       })
       .catch(e => context.error(e))

@@ -1,7 +1,7 @@
 <template>
   <div class="admin-post-page">
     <section class="update-form">
-      <AdminPostForm :post='loadedPost'></AdminPostForm>
+      <AdminPostForm :post="loadedPost" @submit="onChanged"></AdminPostForm>
     </section>
   </div>
 </template>
@@ -9,20 +9,25 @@
 <script>
 
   import AdminPostForm from '@/components/Admin/AdminPostForm'
+  import axios from 'axios'
 
   export default {
     layout: 'admin',
     components: {
       AdminPostForm
     },
-    data() {
-      return {
-        loadedPost: {
-          author: 'Alexandr',
-          title: 'My awesome Post',
-          content: 'Super amazing, thanks for that!',
-          thumbnailLink: 'http://kaifolog.ru/uploads/posts/2015-06/thumbs/1435320076_005.jpg'
+    asyncData(context) {
+      return axios.get(`https://nuxt-demo-e3f33.firebaseio.com/posts/${context.params.postId}.json`)
+      .then(response => {
+        return {
+          loadedPost: {...response.data, id: context.params.postId}
         }
+      })
+      .catch(e => context.error(e))
+    },
+    methods: {
+      onChanged(changedPost) {
+        this.$store.dispatch('editPost', changedPost).then(() => this.$router.push('/admin'))
       }
     }
   }
