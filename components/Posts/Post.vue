@@ -3,7 +3,7 @@
       <section class="post">
           <h1 class="post-title">{{ title }}</h1>
           <div class="post-details">
-              <div class="post-detail">Last updated on {{updatedDate}}</div>
+              <div class="post-detail">Last updated on {{ updatedDate | date }}</div>
               <div class="post-detail">Written by {{author}}</div>
           </div>
           <p class="post-content">{{content}}</p>
@@ -97,7 +97,5 @@
 .post-feedback a:active {
     color: salmon;
 }
-.post-content {
-    margin-top: 10px;
-}
+
 </style>
