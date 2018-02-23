@@ -46,10 +46,12 @@ module.exports = {
     '@nuxtjs/axios'
   ],
   axios: {
-    baseURL: 'https://nuxt-demo-e3f33.firebaseio.com',
+    baseURL: process.env.BASE_URL || 'https://nuxt-demo-e3f33.firebaseio.com',
     credentials: false
   },
-
+  env: {
+    fbAPIKey: 'AIzaSyDElHIdSatUCLV0AMQD5r6RkBHKCBU-_iE'
+  },
   /*
   ** Build configuration
   */
