@@ -29,17 +29,12 @@ export default {
   },
   methods: {
     onSubmit() {
-      let authUrl = `https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=${process.env.fbAPIKey}`
-      if (!this.isLogin) {
-        authUrl = `https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=${process.env.fbAPIKey}`
+      let user = {
+        email: this.email,
+        password: this.password,
+        isLogin: this.isLogin
       }
-        this.$axios.$post(authUrl, {
-          email: this.email,
-          password: this.password,
-          returnSecureToken: true
-        })
-        .then(res => console.log(res))
-        .catch(e => console.log(e.response.data.error.message))
+        this.$store.dispatch('authentication', user).then(() => this.$router.push('/admin'))
       }
     }
   }
