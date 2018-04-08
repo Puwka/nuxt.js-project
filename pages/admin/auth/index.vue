@@ -19,7 +19,6 @@
 export default {
   layout: 'admin',
   name: 'AdminAuthPage',
-  layout: 'admin',
   data() {
     return {
       isLogin: true,
